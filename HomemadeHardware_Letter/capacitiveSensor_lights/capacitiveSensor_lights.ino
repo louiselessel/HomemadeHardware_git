@@ -9,6 +9,7 @@
 */
 
 /*
+  Code by Louise Lessél
   Blink based on capacitive sensor onboard the PCB board. Using a 1 Mega Ohm resistor.
 */
 #define pin 0 // Lights on (MOSI) bottom right opposite of dot
@@ -44,14 +45,9 @@ void loop()
     digitalWrite(pin, LOW);    // turn the LED off by making the voltage LOW
     delay(50);                       // wait for a second
   } else {
-    //    digitalWrite(pin, HIGH);   // turn the LED on (HIGH is the voltage level)
-    //    delay(500);                       // wait for a second
-    //    digitalWrite(pin, LOW);    // turn the LED off by making the voltage LOW
-    //    delay(500);                       // wait for a second
-
     // add change to brightness:
     currentLevel = currentLevel + change;
-    // and constrain to 0-255:
+    // and constrain:
     currentLevel = constrain(currentLevel, 2, 254);
     // if brightness is at either extreme, change the
     // direction of fading:
@@ -62,5 +58,4 @@ void loop()
     analogWrite(pin, currentLevel);
     delay(5);
   }
-
 }
